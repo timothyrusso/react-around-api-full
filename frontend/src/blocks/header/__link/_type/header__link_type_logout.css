@@ -1,0 +1,9 @@
+.header__link_type_logout {
+    color:rgba(169, 169, 169, 1);
+}
+
+@media screen and (max-width: 552px) {
+    .header__link_type_logout {
+        margin: 0;
+    }
+  }

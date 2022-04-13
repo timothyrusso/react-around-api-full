@@ -1,0 +1,15 @@
+- Loading page in ProtectedRoute:
+
+{
+  waitingForLoginCheck ? (
+    <LoadingPage />
+  ) : (
+    <Switch>
+      // Your normal routes
+    </Switch>
+  );
+}
+
+See this gif: https://yandex-students.slack.com/files/U01MW9QU1R6/F02MAM8QTGC/spin-1s-200px.gif
+
+- Navbar tutorial: https://dev.to/ziratsu/code-a-responsive-navbar-with-react-45le

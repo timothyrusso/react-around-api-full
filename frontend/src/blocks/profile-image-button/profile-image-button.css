@@ -1,0 +1,17 @@
+.profile-image-button {
+  border: none;
+  background-image: url(../../images/editImage.svg);
+  width: 100%;
+  max-width: 26px;
+  min-height: 26px;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0;
+  position: absolute;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+
+.profile__image-wrapper:hover .profile-image-button {
+  visibility: visible;
+  cursor: pointer;
+}

@@ -1,0 +1,5 @@
+@media screen and (max-width: 552px) {
+    .header__wrapper_type_login {
+        display: none;
+    }
+  }

@@ -1,0 +1,23 @@
+.burger-button {
+    display: none;
+    background-image: url(../../images/burger.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    /* color: #fff; */
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    transition: opacity 0.2s linear;
+  }
+  
+  .burger-button:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 552px) {
+    .burger-button {
+        display: block;
+      max-width: 28px;
+    }
+  }

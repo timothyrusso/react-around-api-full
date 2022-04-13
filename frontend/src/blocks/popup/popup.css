@@ -1,0 +1,18 @@
+.popup {
+  position: fixed;  /* Stay in place */
+  z-index: 1;  /* Sit on top */
+  left: 0;  /* Location of the box */
+  top: 0;  /* Location of the box */
+  width: 100%;  /* Full width */
+  height: 100%;  /* Full height */
+  background-color: rgb(0, 0, 0);  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.5);  /* Black w/ opacity */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: all linear 0.3s;
+  backdrop-filter: blur(2px);
+}

@@ -1,0 +1,26 @@
+.sign-form__input {
+    display: block;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+    border: none;
+    border-bottom: 2px solid #fff;
+    max-width: 358px;
+    width: 100%;
+    margin: 30px auto 0;
+    padding: 0 0 13px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(204, 204, 204, 1);
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+@media screen and (max-width: 552px) {
+    .sign-form__input {
+      max-width: 260px;
+    }
+  }
