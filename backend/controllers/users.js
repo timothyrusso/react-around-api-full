@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const {
   REQUEST_SUCCEDED, RESOURCE_CREATED, NOT_FOUND, INVALID_DATA, INTERNAL_SERVER_ERROR,
 } = require('../utils/constants');
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const getUsers = (req, res) => User.find({})
   .then((users) => res.status(REQUEST_SUCCEDED).send(users))
@@ -108,7 +109,7 @@ const login = (req, res) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        'some-secret-key',
+        NODE_ENV === 'production' ? JWT_SECRET : 'casual-secret-key',
         { expiresIn: '7d' }
       );
       res.send({ token });

@@ -3,6 +3,7 @@ const helmet = require('helmet');
 const mongoose = require('mongoose');
 const routes = require('./routes');
 const auth = require('./middleware/auth');
+require('dotenv').config();
 const { mongoDbAdress, limiter } = require('./utils/constants');
 const {
   createUser, login,
