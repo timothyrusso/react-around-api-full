@@ -5,6 +5,7 @@ const {
   REQUEST_SUCCEDED, RESOURCE_CREATED, NOT_FOUND, INVALID_DATA, INTERNAL_SERVER_ERROR,
 } = require('../utils/constants');
 const { NODE_ENV, JWT_SECRET } = process.env;
+const UnauthorizedError = require('../errors/unauthorized-err');
 
 const getUsers = (req, res) => User.find({})
   .then((users) => res.status(REQUEST_SUCCEDED).send(users))
@@ -103,7 +104,7 @@ const updateAvatar = (req, res) => {
     });
 };
 
-const login = (req, res) => {
+const login = (req, res, next) => {
   const { email, password } = req.body;
   return User.findUserByCredentials(email, password)
     .then((user) => {
@@ -114,10 +115,8 @@ const login = (req, res) => {
       );
       res.send({ data: user.toJSON(), token });
     })
-    .catch((err) => {
-      res
-        .status(401)
-        .send({ message: err.message });
+    .catch(() => {
+      next(new UnauthorizedError('Incorrect email or password'));
     });
 };
 

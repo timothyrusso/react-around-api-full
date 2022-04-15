@@ -1,15 +1,19 @@
 const router = require('express').Router();
-const auth = require('../middleware/auth')
-
+const auth = require('../middleware/auth');
 const usersRouter = require('./users');
 const cardsRouter = require('./cards');
-const { NOT_FOUND } = require('../utils/constants');
+const NotFoundError = require('../errors/not-found-err');
+const { createUser, login } = require('../controllers/users');
 
+router.post('/signup', createUser);
+router.post('/signin', login);
+
+router.use(auth);
 router.use('/', usersRouter);
 router.use('/', cardsRouter);
 
-router.use((req, res) => {
-  res.status(NOT_FOUND).send({ message: 'Requested resource not found' });
+router.use((req, res, next) => {
+  next(new NotFoundError('No page found for the specified route'));
 });
 
 module.exports = router;

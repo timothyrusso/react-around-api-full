@@ -2,7 +2,6 @@ const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const routes = require('./routes');
-const auth = require('./middleware/auth');
 require('dotenv').config();
 const { mongoDbAdress, limiter } = require('./utils/constants');
 const {
@@ -28,9 +27,11 @@ app.use(helmet());
 app.post('/signup', createUser);
 app.post('/signin', login);
 
-app.use(auth);
-
 app.use(routes);
+
+app.use((err, req, res, next) => {
+  res.status(err.statusCode).send({ message: err.message });
+});
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`); // eslint-disable-line no-console
