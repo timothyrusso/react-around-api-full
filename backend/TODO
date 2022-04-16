@@ -1,5 +1,5 @@
 - Set the correct process.env to the baseurl for the apis
 
-- minuto 10
+- minuto 13.56
 
-- capire dove mettere il middleware auth, se in app.js o in index.js delle routes
+- sistemare la gestione degli errori

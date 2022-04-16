@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 app.use(helmet());
 
-app.post('/signup', createUser);
+app.post('/signup', createUser);  // Verificare che non siano già sufficienti le routes nell'index router
 app.post('/signin', login);
 
 app.use(routes);
