@@ -98,6 +98,18 @@ const validateProfile = celebrate({
   },
 })
 
+// Avatar validation
+const avatarValidation = celebrate({
+  body: {
+    avatar: Joi.string().required()
+      .custom(validateURL)
+      .message('The "avatar" field must be a valid URL')
+      .messages({
+        'string.empty': 'The "avatar" field must be filled in',
+      }),
+  },
+})
+
 module.exports = {
-  validateAuthentication, validateUserCreation, validateUserId, validateCardId, validateProfile,
+  validateAuthentication, validateUserCreation, validateUserId, validateCardId, validateProfile, avatarValidation,
 };
