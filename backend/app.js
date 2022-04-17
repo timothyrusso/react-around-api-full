@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+const { errors } = require('celebrate');
 require('dotenv').config();
 const { mongoDbAdress, limiter } = require('./utils/constants');
 const {
@@ -28,6 +29,8 @@ app.post('/signup', createUser);  // Verificare che non siano già sufficienti l
 app.post('/signin', login);
 
 app.use(routes);
+
+app.use(errors()); // celebrate error handler
 
 app.use((err, req, res, next) => {
   const { statusCode = 500, message } = err;
