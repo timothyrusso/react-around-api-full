@@ -110,6 +110,24 @@ const avatarValidation = celebrate({
   },
 })
 
+// card creation validator
+const createCardValidation = celebrate({
+  body: {
+    name: Joi.string().required().min(2).max(30)
+      .messages({
+        'string.min': 'The minimum lenght of the "name" field is 2',
+        'string.max': 'The maximum lenght of the "name" field is 30',
+        'string.empty': 'The "name" filed must be filled in',
+      }),
+    link: Joi.string().required()
+      .custom(validateURL)
+      .message('The "link" field must be a valid URL')
+      .messages({
+        'string.empty': 'The "link" field must be filled in',
+      }),
+  }
+})
+
 module.exports = {
-  validateAuthentication, validateUserCreation, validateUserId, validateCardId, validateProfile, avatarValidation,
+  validateAuthentication, validateUserCreation, validateUserId, validateCardId, validateProfile, avatarValidation, createCardValidation,
 };
