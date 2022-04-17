@@ -3,6 +3,7 @@ const helmet = require('helmet');
 const mongoose = require('mongoose');
 const routes = require('./routes');
 const { errors } = require('celebrate');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 require('dotenv').config();
 const { mongoDbAdress, limiter } = require('./utils/constants');
 const {
@@ -25,10 +26,14 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 app.use(helmet());
 
+app.use(requestLogger); // enabling the request logger
+
 app.post('/signup', createUser);  // Verificare che non siano già sufficienti le routes nell'index router
 app.post('/signin', login);
 
 app.use(routes);
+
+app.use(errorLogger); // enabling the error logger
 
 app.use(errors()); // celebrate error handler
 
