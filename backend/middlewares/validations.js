@@ -58,15 +58,25 @@ const validateUserCreation = celebrate({
   })
 });
 
-// ID validation from the params
-const validateId = celebrate({
+// userId validation
+const validateUserId = celebrate({
   params: Joi.object().keys({
-    id: Joi.string().required().custom((value, helpers) => {
-      if (ObjectId.isValid(value)) {
-        return value;
-      }
-      return helpers.message('Invalid id');
-    }),
+    userId: Joi.string().alphanum()
+      .message('The id is invalid')
+      .messages({
+        'string.empty': 'The "Id" filed must be filled in',
+      }),
+  }),
+});
+
+// cardId validation
+const validateCardId = celebrate({
+  params: Joi.object().keys({
+    cardId: Joi.string().alphanum()
+      .message('The id is invalid')
+      .messages({
+        'string.empty': 'The "Id" filed must be filled in',
+      }),
   }),
 });
 
@@ -89,5 +99,5 @@ const validateProfile = celebrate({
 })
 
 module.exports = {
-  validateAuthentication, validateUserCreation, validateId, validateProfile,
+  validateAuthentication, validateUserCreation, validateUserId, validateCardId, validateProfile,
 };
