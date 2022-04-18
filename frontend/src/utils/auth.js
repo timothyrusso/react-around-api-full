@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://register.nomoreparties.co';
+export const BASE_URL = 'https://aroundtheus-timothyrusso.students.nomoreparties.sbs';
 
 const checkResponse = (res) => {
     if (res.ok) {
