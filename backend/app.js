@@ -1,4 +1,5 @@
 const express = require('express');
+let cors = require('cors');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const routes = require('./routes');
@@ -27,6 +28,9 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.use(helmet());
 
 app.use(requestLogger); // enabling the request logger
+
+app.use(cors());
+app.options('*', cors()); //enable requests for all routes
 
 app.post('/signup', createUser);  // Verificare che non siano già sufficienti le routes nell'index router
 app.post('/signin', login);
