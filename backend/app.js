@@ -45,9 +45,6 @@ app.use((req, res, next) => {
 app.use(cors());
 app.options('*', cors()); //enable requests for all routes
 
-app.post('/signup', createUser);  // Verificare che non siano già sufficienti le routes nell'index router
-app.post('/signin', login);
-
 app.use(routes);
 
 app.use(errorLogger); // enabling the error logger

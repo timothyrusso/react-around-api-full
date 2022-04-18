@@ -9,7 +9,7 @@ const { validateAuthentication, validateUserCreation } = require('../middlewares
 router.post('/signup', validateUserCreation, createUser);
 router.post('/signin', validateAuthentication, login);
 
-// router.use(auth);
+router.use(auth);
 router.use('/', usersRouter);
 router.use('/', cardsRouter);
 
