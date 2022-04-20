@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://aroundtheus-timothyrusso.students.nomoreparties.sbs';
+export const BASE_URL = 'https://api.aroundtheus-timothyrusso.students.nomoreparties.sbs';
 
 const checkResponse = (res) => {
     if (res.ok) {
