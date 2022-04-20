@@ -8,7 +8,7 @@ class Api {
     constructor(config) {
         this._baseUrl = config.baseUrl;
         // this._groupId = config.groupId;
-        this._header = config.header;
+        this._header = config.headers;
     }
 
     /**
