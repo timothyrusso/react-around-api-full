@@ -225,7 +225,6 @@ const App = () => {
 
   React.useEffect(() => {
     const jwt = localStorage.getItem("jwt");
-    console.log(jwt)
     if (jwt && loggedIn) {
       api.getProfileInfo()
         .then((info) => {
