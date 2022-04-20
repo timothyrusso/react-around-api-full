@@ -7,9 +7,7 @@ const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 require('dotenv').config();
 const { mongoDbAdress, limiter } = require('./utils/constants');
-const {
-  createUser, login,
-} = require('./controllers/users');
+
 
 const app = express();
 const { PORT = 3000 } = process.env;
@@ -44,6 +42,12 @@ app.use((req, res, next) => {
 
 app.use(cors());
 app.options('*', cors()); //enable requests for all routes
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Server will crash now');
+  }, 0);
+});
 
 app.use(routes);
 
