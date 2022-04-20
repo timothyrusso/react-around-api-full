@@ -224,20 +224,24 @@ const App = () => {
   }
 
   React.useEffect(() => {
-    api.getProfileInfo()
-      .then((info) => {
-        setCurrentUser(info)
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-    api.getCards()
-      .then((data) => {
-        setCards(data)
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+    const jwt = localStorage.getItem("jwt");
+    console.log(jwt)
+    if (jwt && loggedIn) {
+      api.getProfileInfo()
+        .then((info) => {
+          setCurrentUser(info)
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+      api.getCards()
+        .then((data) => {
+          setCards(data)
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
   }, [loggedIn])
 
   React.useEffect(() => {
