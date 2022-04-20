@@ -104,6 +104,7 @@ const updateAvatar = (req, res) => {
     });
 };
 
+// POST signin
 const login = (req, res, next) => {
   const { email, password } = req.body;
   return User.findUserByCredentials(email, password)
@@ -113,7 +114,7 @@ const login = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET : 'casual-secret-key',
         { expiresIn: '7d' }
       );
-      res.send({ data: user.toJSON(), token });
+      res.send({ data: user.toJSON(), token }); // Send back to the frontend the user obj
     })
     .catch(() => {
       next(new UnauthorizedError('Incorrect email or password'));
