@@ -7,7 +7,7 @@ import { apiConfig } from './constants.js';
 class Api {
     constructor(config) {
         this._baseUrl = config.baseUrl;
-        this._groupId = config.groupId;
+        // this._groupId = config.groupId;
         this._header = config.header;
     }
 
@@ -33,7 +33,7 @@ class Api {
      * @returns {Object} Promise object containing all the information of the user
      */
     getProfileInfo() {
-        return fetch(`${this._baseUrl}/${this._groupId}/users/me/`, {
+        return fetch(`${this._baseUrl}/users/me/`, {
             headers: this._header
         })
             .then(this._checkResponse)
@@ -46,7 +46,7 @@ class Api {
      * @returns {Object} Promise object containing all the new information of the user
      */
     saveProfileInfo({ name, about }) {
-        return fetch(`${this._baseUrl}/${this._groupId}/users/me`, {
+        return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._header,
             body: JSON.stringify({
@@ -63,7 +63,7 @@ class Api {
      * @returns {Object} Promise object containing all the new information of the user
      */
     saveProfileImage({ avatar }) {
-        return fetch(`${this._baseUrl}/${this._groupId}/users/me/avatar`, {
+        return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._header,
             body: JSON.stringify({
@@ -78,7 +78,7 @@ class Api {
      * @returns {Object} Promise object containing all the cards
      */
     getCards() {
-        return fetch(`${this._baseUrl}/${this._groupId}/cards/`, {
+        return fetch(`${this._baseUrl}/cards/`, {
             headers: this._header
         })
             .then(this._checkResponse)
@@ -91,7 +91,7 @@ class Api {
      * @returns {Object} Promise object containing all the information of the new card
      */
     saveCards({ name, imageLink }) {
-        return fetch(`${this._baseUrl}/${this._groupId}/cards`, {
+        return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
             headers: this._header,
             body: JSON.stringify({
@@ -108,7 +108,7 @@ class Api {
      * @returns {Object} Promise object containing the confirmation message of the cancellation
      */
     deleteCards({ cardId }) {
-        return fetch(`${this._baseUrl}/${this._groupId}/cards/${cardId}`, {
+        return fetch(`${this._baseUrl}/cards/${cardId}`, {
             method: 'DELETE',
             headers: this._header
         })
@@ -121,7 +121,7 @@ class Api {
      * @returns {Object} Promise object containing all the information of the liked card
      */
     likeCards({ cardId }) {
-        return fetch(`${this._baseUrl}/${this._groupId}/cards/likes/${cardId}`, {
+        return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
             method: 'PUT',
             headers: this._header
         })
@@ -134,7 +134,7 @@ class Api {
      * @returns {Object} Promise object containing all the information of the disliked card
      */
     dislikeCards({ cardId }) {
-        return fetch(`${this._baseUrl}/${this._groupId}/cards/likes/${cardId}`, {
+        return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
             method: 'DELETE',
             headers: this._header
         })
@@ -148,7 +148,7 @@ class Api {
      * @returns {Object} Promise object containing all the information of the disliked card
      */
     changeLikeCardStatus({ cardId, isLiked }) {
-        return fetch(`${this._baseUrl}/${this._groupId}/cards/likes/${cardId}`, {
+        return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
             method: isLiked ? 'DELETE' : 'PUT',
             headers: this._header
         })
