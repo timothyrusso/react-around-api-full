@@ -238,8 +238,11 @@ const App = () => {
       .catch((err) => {
         console.log(err);
       })
+  }, [loggedIn])
+
+  React.useEffect(() => {
     handleTokenCheck();
-  }, [])
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
