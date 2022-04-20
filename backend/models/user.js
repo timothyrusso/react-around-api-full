@@ -60,4 +60,10 @@ userSchema.statics.findUserByCredentials = function findUserByCredentials(email,
     });
 };
 
+userSchema.methods.toJSON = function () {
+  const { password, ...obj } = this.toObject();
+
+  return obj;
+}
+
 module.exports = mongoose.model('user', userSchema);
