@@ -34,7 +34,7 @@ const getProfile = (req, res) => {
 };
 
 // POST /signup
-const createUser = (req, res) => {
+const createUser = (req, res, next) => {
   const { name, about, avatar, email, password } = req.body;
   User.findOne({ email })
     .then((user) => {
