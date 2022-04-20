@@ -8,6 +8,7 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 const UnauthorizedError = require('../errors/unauthorized-err');
 const ConflictError = require('../errors/conflict-err');
 const BadRequestError = require('../errors/bad-request-err');
+const NotFoundError = require('../errors/not-found-err');
 
 const getUsers = (req, res) => User.find({})
   .then((users) => res.status(REQUEST_SUCCEDED).send(users))
@@ -32,6 +33,15 @@ const getProfile = (req, res) => {
       }
     });
 };
+
+// GET users/me
+const getCurrentUser = (req, res, next) => {
+  const { id } = req.user._id;
+  User.findById(id)
+  orFail(() => new NotFoundError('No user found with that id'))
+    .then((user) => { res.status(REQUEST_SUCCEDED).send({ data: user }); })
+    .catch(next);
+}
 
 // POST /signup
 const createUser = (req, res, next) => {
@@ -131,5 +141,5 @@ const login = (req, res, next) => {
 };
 
 module.exports = {
-  getUsers, getProfile, createUser, updateProfile, updateAvatar, login
+  getUsers, getProfile, createUser, updateProfile, updateAvatar, login, getCurrentUser,
 };
