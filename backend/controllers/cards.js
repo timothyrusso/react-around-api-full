@@ -1,4 +1,6 @@
 const Card = require('../models/card');
+const NotFoundError = require('../errors/not-found-err');
+const ForbiddenError = require('../errors//forbidden-err');
 const {
   REQUEST_SUCCEDED, RESOURCE_CREATED, NOT_FOUND, INVALID_DATA, INTERNAL_SERVER_ERROR,
 } = require('../utils/constants');
@@ -20,23 +22,20 @@ const createCard = (req, res) => {
     });
 };
 
-const deleteCard = (req, res) => {
-  Card.findByIdAndRemove(req.params.cardId)
+const deleteCard = (req, res, next) => {
+  Card.findById(req.params.cardId)
     .orFail(() => {
-      const error = new Error('No card found with that id');
-      error.statusCode = NOT_FOUND;
-      throw error;
+      new NotFoundError('Card ID not found');
     })
-    .then((card) => { res.status(REQUEST_SUCCEDED).send({ data: card }); })
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        res.status(INVALID_DATA).send({ message: 'Invalid card ID' });
-      } else if (err.statusCode === NOT_FOUND) {
-        res.status(NOT_FOUND).send({ message: err.message });
+    .then((card) => {
+      if (!card.owner.equals(req.user._id)) {
+        next(new ForbiddenError('Yoy cannot delete someone else\'s card')) // cannot delete the card if you are not the owner
       } else {
-        res.status(INTERNAL_SERVER_ERROR).send({ message: `An error has occurred on the server: ${err}` });
+        Card.deleteOne(card)
+          .then(() => res.status(REQUEST_SUCCEDED).send({ data: card }))
       }
-    });
+    })
+    .catch(next);
 };
 
 const likeCard = (req, res) => {
