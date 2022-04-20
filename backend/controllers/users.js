@@ -7,6 +7,7 @@ const {
 const { NODE_ENV, JWT_SECRET } = process.env;
 const UnauthorizedError = require('../errors/unauthorized-err');
 const ConflictError = require('../errors/conflict-err');
+const BadRequestError = require('../errors/bad-request-err');
 
 const getUsers = (req, res) => User.find({})
   .then((users) => res.status(REQUEST_SUCCEDED).send(users))
@@ -35,26 +36,27 @@ const getProfile = (req, res) => {
 // POST /signup
 const createUser = (req, res) => {
   const { name, about, avatar, email, password } = req.body;
-
   User.findOne({ email })
     .then((user) => {
-      throw new
-  })
-
-  bcrypt.hash(password, 10) // hashing the password
+      if (user) {
+        throw new ConflictError('The user with the provided email already exist');
+      } else {
+        return bcrypt.hash(password, 10) // hashing the password
+      }
+    })
     .then(hash => User.create({
       name,
       about,
       avatar,
-      email,
+      email, // adding the email to the database
       password: hash, // adding the hash to the database
     }))
     .then((user) => res.status(RESOURCE_CREATED).send({ data: user }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        res.status(INVALID_DATA).send({ message: 'Invalid user data' });
+        next(new BadRequestError(`${Object.values(err.errors).map((error) => error.message).join(', ')}`));
       } else {
-        res.status(INTERNAL_SERVER_ERROR).send({ message: `An error has occurred on the server: ${err}` });
+        next(err);
       }
     });
 };
