@@ -6,6 +6,7 @@ const {
 } = require('../utils/constants');
 const { NODE_ENV, JWT_SECRET } = process.env;
 const UnauthorizedError = require('../errors/unauthorized-err');
+const ConflictError = require('../errors/conflict-err');
 
 const getUsers = (req, res) => User.find({})
   .then((users) => res.status(REQUEST_SUCCEDED).send(users))
@@ -31,10 +32,16 @@ const getProfile = (req, res) => {
     });
 };
 
+// POST /signup
 const createUser = (req, res) => {
   const { name, about, avatar, email, password } = req.body;
-  // hashing the password
-  bcrypt.hash(password, 10)
+
+  User.findOne({ email })
+    .then((user) => {
+      throw new
+  })
+
+  bcrypt.hash(password, 10) // hashing the password
     .then(hash => User.create({
       name,
       about,
