@@ -6,9 +6,9 @@ const { validateUserId, validateProfile, avatarValidation } = require('../middle
 
 router.get('/users', getUsers);
 
-router.get('/users/:userId', validateUserId, getProfile);
-
 router.get('/users/me', getCurrentUser);
+
+router.get('/users/:userId', validateUserId, getProfile);
 
 router.patch('/users/me', validateProfile, updateProfile);
 
