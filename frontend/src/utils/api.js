@@ -121,7 +121,7 @@ class Api {
      * @returns {Object} Promise object containing all the information of the liked card
      */
     likeCards({ cardId }) {
-        return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             method: 'PUT',
             headers: this._header
         })
@@ -134,7 +134,7 @@ class Api {
      * @returns {Object} Promise object containing all the information of the disliked card
      */
     dislikeCards({ cardId }) {
-        return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             method: 'DELETE',
             headers: this._header
         })
@@ -148,7 +148,7 @@ class Api {
      * @returns {Object} Promise object containing all the information of the disliked card
      */
     changeLikeCardStatus({ cardId, isLiked }) {
-        return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             method: isLiked ? 'DELETE' : 'PUT',
             headers: this._header
         })
