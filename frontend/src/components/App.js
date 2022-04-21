@@ -155,12 +155,13 @@ const App = () => {
   const handleTokenCheck = () => {
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
+      console.log(jwt);
       checkToken(jwt).then((res) => {
         if (res) {
           setLoggedIn(true);
           history("/");
         } else {
-          localStorage.removeItem("jvt")
+          localStorage.removeItem("jwt")
         }
       })
         .catch((err) => console.log(err))
