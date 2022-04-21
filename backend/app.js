@@ -1,13 +1,12 @@
 const express = require('express');
-let cors = require('cors');
+const cors = require('cors');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
-const routes = require('./routes');
 const { errors } = require('celebrate');
+const routes = require('./routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 require('dotenv').config();
 const { mongoDbAdress, limiter } = require('./utils/constants');
-
 
 const app = express();
 const { PORT = 3000 } = process.env;
@@ -30,18 +29,18 @@ app.use(requestLogger); // enabling the request logger
 app.use((req, res, next) => {
   res.header(
     'Access-Control-Allow-Origin',
-    'https://aroundtheus-timothyrusso.students.nomoreparties.sbs'
+    'https://aroundtheus-timothyrusso.students.nomoreparties.sbs',
   );
   res.header(
     'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
+    'Origin, X-Requested-With, Content-Type, Accept',
   );
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
   next();
 });
 
 app.use(cors());
-app.options('*', cors()); //enable requests for all routes
+app.options('*', cors()); // Enable requests for all routes
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -62,7 +61,7 @@ app.use((err, req, res, next) => {
     .send({
       message: statusCode === 500
         ? 'An error occurred on the server'
-        : message
+        : message,
     });
 });
 

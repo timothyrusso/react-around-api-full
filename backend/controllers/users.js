@@ -1,9 +1,10 @@
-const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const User = require('../models/user');
 const {
   REQUEST_SUCCEDED, RESOURCE_CREATED, NOT_FOUND, INVALID_DATA, INTERNAL_SERVER_ERROR,
 } = require('../utils/constants');
+
 const { NODE_ENV, JWT_SECRET } = process.env;
 const UnauthorizedError = require('../errors/unauthorized-err');
 const ConflictError = require('../errors/conflict-err');
@@ -38,23 +39,25 @@ const getProfile = (req, res) => {
 const getCurrentUser = (req, res, next) => {
   const { id } = req.user._id;
   User.findById(id)
-  orFail(() => new NotFoundError('No user found with that id'))
+    .orFail(() => new NotFoundError('No user found with that id'))
     .then((user) => { res.status(REQUEST_SUCCEDED).send({ data: user }); })
     .catch(next);
-}
+};
 
 // POST /signup
 const createUser = (req, res, next) => {
-  const { name, about, avatar, email, password } = req.body;
+  const {
+    name, about, avatar, email, password,
+  } = req.body;
   User.findOne({ email })
     .then((user) => {
       if (user) {
         throw new ConflictError('The user with the provided email already exist');
       } else {
-        return bcrypt.hash(password, 10) // hashing the password
+        return bcrypt.hash(password, 10); // hashing the password
       }
     })
-    .then(hash => User.create({
+    .then((hash) => User.create({
       name,
       about,
       avatar,
@@ -131,7 +134,7 @@ const login = (req, res, next) => {
       const token = jwt.sign(
         { _id: user._id },
         NODE_ENV === 'production' ? JWT_SECRET : 'casual-secret-key',
-        { expiresIn: '7d' }
+        { expiresIn: '7d' },
       );
       res.send({ data: user.toJSON(), token }); // Send back to the frontend the user obj
     })

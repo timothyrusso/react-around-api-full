@@ -1,6 +1,6 @@
 const Card = require('../models/card');
 const NotFoundError = require('../errors/not-found-err');
-const ForbiddenError = require('../errors//forbidden-err');
+const ForbiddenError = require('../errors/forbidden-err');
 const {
   REQUEST_SUCCEDED, RESOURCE_CREATED, NOT_FOUND, INVALID_DATA, INTERNAL_SERVER_ERROR,
 } = require('../utils/constants');
@@ -24,15 +24,12 @@ const createCard = (req, res) => {
 
 const deleteCard = (req, res, next) => {
   Card.findById(req.params.cardId)
-    .orFail(() => {
-      new NotFoundError('Card ID not found');
-    })
+    .orFail(() => new NotFoundError('Card ID not found'))
     .then((card) => {
       if (!card.owner.equals(req.user._id)) {
-        next(new ForbiddenError('Yoy cannot delete someone else\'s card')) // cannot delete the card if you are not the owner
+        next(new ForbiddenError('Yoy cannot delete someone else\'s card')); // cannot delete the card if you are not the owner
       } else {
-        Card.deleteOne(card)
-          .then(() => res.status(REQUEST_SUCCEDED).send({ data: card }))
+        Card.deleteOne(card).then(() => res.status(REQUEST_SUCCEDED).send({ data: card }));
       }
     })
     .catch(next);

@@ -1,6 +1,5 @@
 const { celebrate, Joi } = require('celebrate');
-const { ObjectId } = require('mongoose').Types;
-
+const validator = require('validator');
 
 // URL custom validator
 const validateURL = (value, helpers) => {
@@ -8,7 +7,7 @@ const validateURL = (value, helpers) => {
     return value;
   }
   return helpers.error('string.uri');
-}
+};
 
 // Login validation
 const validateAuthentication = celebrate({
@@ -22,7 +21,7 @@ const validateAuthentication = celebrate({
       .messages({
         'string.empty': 'The "password" field must be filled in',
       }),
-  })
+  }),
 });
 
 // User creation validation
@@ -55,7 +54,7 @@ const validateUserCreation = celebrate({
       .messages({
         'string.empty': 'The "avatar" field must be filled in',
       }),
-  })
+  }),
 });
 
 // userId validation
@@ -96,7 +95,7 @@ const validateProfile = celebrate({
         'string.empty': 'The "about" filed must be filled in',
       }),
   },
-})
+});
 
 // Avatar validation
 const avatarValidation = celebrate({
@@ -108,7 +107,7 @@ const avatarValidation = celebrate({
         'string.empty': 'The "avatar" field must be filled in',
       }),
   },
-})
+});
 
 // card creation validator
 const createCardValidation = celebrate({
@@ -125,9 +124,9 @@ const createCardValidation = celebrate({
       .messages({
         'string.empty': 'The "link" field must be filled in',
       }),
-  }
-})
+  },
+});
 
 module.exports = {
-  validateAuthentication, validateUserCreation, validateUserId, validateCardId, validateProfile, avatarValidation, createCardValidation,
+  validateAuthentication, validateUserCreation, validateUserId, validateCardId, validateProfile, avatarValidation, createCardValidation, // eslint-disable-line
 };
