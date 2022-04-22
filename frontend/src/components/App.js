@@ -100,7 +100,7 @@ const App = () => {
   const handleUpdateUser = (currentUser) => {
     api.saveProfileInfo({ name: currentUser.name, about: currentUser.about })
       .then((info) => {
-        setCurrentUser(info)
+        setCurrentUser(info.data)
         closeAllPopups()
       })
       .catch((err) => {
@@ -114,7 +114,7 @@ const App = () => {
   const handleUpdateAvatar = (currentUser) => {
     api.saveProfileImage({ avatar: currentUser.avatar })
       .then((info) => {
-        setCurrentUser(info)
+        setCurrentUser(info.data)
         closeAllPopups()
       })
       .catch((err) => {
@@ -155,7 +155,6 @@ const App = () => {
   const handleTokenCheck = () => {
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
-      console.log(jwt);
       checkToken(jwt).then((res) => {
         if (res) {
           setLoggedIn(true);
@@ -229,7 +228,7 @@ const App = () => {
     if (jwt && loggedIn) {
       api.getProfileInfo()
         .then((info) => {
-          setCurrentUser(info)
+          setCurrentUser(info.data)
         })
         .catch((err) => {
           console.log(err);
