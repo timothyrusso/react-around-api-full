@@ -7,8 +7,6 @@ import { apiConfig } from './constants.js';
 class Api {
   constructor(config) {
     this._baseUrl = config.baseUrl;
-    // this._groupId = config.groupId;
-    this._header = config.headers;
   }
 
   /**
@@ -34,7 +32,10 @@ class Api {
    */
   getProfileInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._header
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        'Content-Type': 'application/json'
+      }
     })
       .then(this._checkResponse)
   }
@@ -48,7 +49,10 @@ class Api {
   saveProfileInfo({ name, about }) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: this._header,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: name,
         about: about
@@ -65,7 +69,10 @@ class Api {
   saveProfileImage({ avatar }) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._header,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         avatar: avatar
       })
@@ -79,7 +86,10 @@ class Api {
    */
   getCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      headers: this._header
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        'Content-Type': 'application/json'
+      }
     })
       .then(this._checkResponse)
   }
@@ -93,7 +103,10 @@ class Api {
   saveCards({ name, imageLink }) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
-      headers: this._header,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: name,
         link: imageLink
@@ -110,7 +123,10 @@ class Api {
   deleteCards({ cardId }) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
-      headers: this._header
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        'Content-Type': 'application/json'
+      }
     })
       .then(this._checkResponse)
   }
@@ -123,7 +139,10 @@ class Api {
   likeCards({ cardId }) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: 'PUT',
-      headers: this._header
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        'Content-Type': 'application/json'
+      }
     })
       .then(this._checkResponse)
   }
@@ -136,7 +155,10 @@ class Api {
   dislikeCards({ cardId }) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: 'DELETE',
-      headers: this._header
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        'Content-Type': 'application/json'
+      }
     })
       .then(this._checkResponse)
   }
@@ -150,7 +172,10 @@ class Api {
   changeLikeCardStatus({ cardId, isLiked }) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: isLiked ? 'DELETE' : 'PUT',
-      headers: this._header
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        'Content-Type': 'application/json'
+      }
     })
       .then(this._checkResponse)
   }

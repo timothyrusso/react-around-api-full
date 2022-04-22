@@ -179,6 +179,7 @@ const App = () => {
     setLoggedIn(false);
     setToggleMenu(false);
     localStorage.removeItem('jwt');
+    setCurrentUser({});
     history('/signin');
   }
 
