@@ -223,8 +223,6 @@ const App = () => {
       })
   }
 
-console.log(localStorage.jwt)
-
   React.useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt && loggedIn) {

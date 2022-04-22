@@ -33,7 +33,7 @@ class Api {
    * @returns {Object} Promise object containing all the information of the user
    */
   getProfileInfo() {
-    return fetch(`${this._baseUrl}/users/me/`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       headers: this._header
     })
       .then(this._checkResponse)
@@ -78,7 +78,7 @@ class Api {
    * @returns {Object} Promise object containing all the cards
    */
   getCards() {
-    return fetch(`${this._baseUrl}/cards/`, {
+    return fetch(`${this._baseUrl}/cards`, {
       headers: this._header
     })
       .then(this._checkResponse)
