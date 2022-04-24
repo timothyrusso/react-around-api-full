@@ -13,24 +13,20 @@ const NotFoundError = require('../errors/not-found-err');
 
 const getUsers = (req, res) => User.find({})
   .then((users) => res.status(REQUEST_SUCCEDED).send(users))
-  .catch((err) => res.status(INTERNAL_SERVER_ERROR).send({ message: `An error has occurred on the server: ${err}` }));
+  .catch(next);
 
 const getProfile = (req, res) => {
   const { userId } = req.params;
   User.findById(userId)
-    .orFail(() => {
-      const error = new Error('No user found with that id');
-      error.statusCode = NOT_FOUND;
-      throw error;
-    })
+    .orFail(() => new NotFoundError('User ID not found'))
     .then((user) => { res.status(REQUEST_SUCCEDED).send({ data: user }); })
     .catch((err) => {
       if (err.name === 'CastError') {
-        res.status(INVALID_DATA).send({ message: 'Invalid user ID' });
+        next(new BadRequestError('Invalid user ID'));
       } else if (err.statusCode === NOT_FOUND) {
-        res.status(NOT_FOUND).send({ message: err.message });
+        new NotFoundError('User not found')
       } else {
-        res.status(INTERNAL_SERVER_ERROR).send({ message: `An error has occurred on the server: ${err}` });
+        next(err);
       }
     });
 };
@@ -85,19 +81,15 @@ const updateProfile = (req, res) => {
       runValidators: true, // // the data will be validated before the update
     },
   )
-    .orFail(() => {
-      const error = new Error('No user found with that id');
-      error.statusCode = NOT_FOUND;
-      throw error;
-    })
+    .orFail(() => new NotFoundError('No user found with that id'))
     .then((user) => { res.status(REQUEST_SUCCEDED).send({ data: user }); })
     .catch((err) => {
       if (err.name === 'CastError') {
-        res.status(INVALID_DATA).send({ message: 'Invalid user ID' });
+        next(new BadRequestError('Invalid user ID'));
       } else if (err.statusCode === NOT_FOUND) {
-        res.status(NOT_FOUND).send({ message: err.message });
+        new NotFoundError('User not found')
       } else {
-        res.status(INTERNAL_SERVER_ERROR).send({ message: `An error has occurred on the server: ${err}` });
+        next(err);
       }
     });
 };
@@ -109,19 +101,15 @@ const updateAvatar = (req, res) => {
     { avatar },
     { new: true, runValidators: true },
   )
-    .orFail(() => {
-      const error = new Error('No user found with that id');
-      error.statusCode = NOT_FOUND;
-      throw error;
-    })
+    .orFail(() => new NotFoundError('No user found with that id'))
     .then((user) => { res.status(REQUEST_SUCCEDED).send({ data: user }); })
     .catch((err) => {
       if (err.name === 'CastError') {
-        res.status(INVALID_DATA).send({ message: 'Invalid user ID' });
+        next(new BadRequestError('Invalid user ID'));
       } else if (err.statusCode === NOT_FOUND) {
-        res.status(NOT_FOUND).send({ message: err.message });
+        new NotFoundError('User not found')
       } else {
-        res.status(INTERNAL_SERVER_ERROR).send({ message: `An error has occurred on the server: ${err}` });
+        next(err);
       }
     });
 };
