@@ -60,7 +60,7 @@ const validateUserCreation = celebrate({
 // userId validation
 const validateUserId = celebrate({
   params: Joi.object().keys({
-    userId: Joi.string().alphanum()
+    userId: Joi.string().hex()
       .message('The id is invalid')
       .messages({
         'string.empty': 'The "Id" filed must be filled in',
@@ -71,7 +71,7 @@ const validateUserId = celebrate({
 // cardId validation
 const validateCardId = celebrate({
   params: Joi.object().keys({
-    cardId: Joi.string().alphanum()
+    cardId: Joi.string().hex()
       .message('The id is invalid')
       .messages({
         'string.empty': 'The "Id" filed must be filled in',
