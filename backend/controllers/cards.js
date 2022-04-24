@@ -3,14 +3,14 @@ const NotFoundError = require('../errors/not-found-err');
 const ForbiddenError = require('../errors/forbidden-err');
 const BadRequestError = require('../errors/bad-request-err');
 const {
-  REQUEST_SUCCEDED, RESOURCE_CREATED, NOT_FOUND, INVALID_DATA, INTERNAL_SERVER_ERROR,
+  REQUEST_SUCCEDED, RESOURCE_CREATED, NOT_FOUND,
 } = require('../utils/constants');
 
 const getCards = (req, res, next) => Card.find({})
   .then((cards) => res.status(REQUEST_SUCCEDED).send(cards))
   .catch(next);
 
-const createCard = (req, res) => {
+const createCard = (req, res, next) => {
   const { name, link } = req.body;
   Card.create({ name, link, owner: req.user._id })
     .then((card) => res.status(RESOURCE_CREATED).send(card))
@@ -36,7 +36,7 @@ const deleteCard = (req, res, next) => {
     .catch(next);
 };
 
-const likeCard = (req, res) => {
+const likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.cardId,
     { $addToSet: { likes: req.user._id } }, // add _id to the array if it's not there yet
@@ -48,14 +48,14 @@ const likeCard = (req, res) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Invalid card ID'));
       } else if (err.statusCode === NOT_FOUND) {
-        new NotFoundError('Card not found')
+        next(new NotFoundError('Card not found'));
       } else {
         next(err);
       }
     });
 };
 
-const dislikeCard = (req, res) => {
+const dislikeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.cardId,
     { $pull: { likes: req.user._id } }, // remove _id from the array
@@ -67,7 +67,7 @@ const dislikeCard = (req, res) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Invalid card ID'));
       } else if (err.statusCode === NOT_FOUND) {
-        new NotFoundError('Card not found')
+        next(new NotFoundError('Card not found'));
       } else {
         next(err);
       }

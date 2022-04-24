@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const {
-  REQUEST_SUCCEDED, RESOURCE_CREATED, NOT_FOUND, INVALID_DATA, INTERNAL_SERVER_ERROR,
+  REQUEST_SUCCEDED, RESOURCE_CREATED, NOT_FOUND,
 } = require('../utils/constants');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
@@ -11,11 +11,11 @@ const ConflictError = require('../errors/conflict-err');
 const BadRequestError = require('../errors/bad-request-err');
 const NotFoundError = require('../errors/not-found-err');
 
-const getUsers = (req, res) => User.find({})
+const getUsers = (req, res, next) => User.find({})
   .then((users) => res.status(REQUEST_SUCCEDED).send(users))
   .catch(next);
 
-const getProfile = (req, res) => {
+const getProfile = (req, res, next) => {
   const { userId } = req.params;
   User.findById(userId)
     .orFail(() => new NotFoundError('User ID not found'))
@@ -24,7 +24,7 @@ const getProfile = (req, res) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Invalid user ID'));
       } else if (err.statusCode === NOT_FOUND) {
-        new NotFoundError('User not found')
+        next(new NotFoundError('User not found'));
       } else {
         next(err);
       }
@@ -70,7 +70,7 @@ const createUser = (req, res, next) => {
     });
 };
 
-const updateProfile = (req, res) => {
+const updateProfile = (req, res, next) => {
   const { name, about } = req.body;
   User.findByIdAndUpdate(
     req.user._id,
@@ -87,14 +87,14 @@ const updateProfile = (req, res) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Invalid user ID'));
       } else if (err.statusCode === NOT_FOUND) {
-        new NotFoundError('User not found')
+        next(new NotFoundError('User not found'));
       } else {
         next(err);
       }
     });
 };
 
-const updateAvatar = (req, res) => {
+const updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
   User.findByIdAndUpdate(
     req.user._id,
@@ -107,7 +107,7 @@ const updateAvatar = (req, res) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Invalid user ID'));
       } else if (err.statusCode === NOT_FOUND) {
-        new NotFoundError('User not found')
+        next(new NotFoundError('User not found'));
       } else {
         next(err);
       }
