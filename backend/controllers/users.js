@@ -124,7 +124,7 @@ const login = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET : 'casual-secret-key',
         { expiresIn: '7d' },
       );
-      res.send({ data: user.toJSON() }); // Send back to the frontend the user obj
+      res.send({ data: user.toJSON(), token }); // Send back to the frontend the user obj
     })
     .catch(() => {
       next(new UnauthorizedError('Incorrect email or password'));
