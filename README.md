@@ -16,6 +16,16 @@ This application contains hover effects, links and transitions effects. Main fun
 - View the preview of the images
 - User validation
 
+## Running the backend  
+  
+`npm run start` — to launch the server.  
+  
+`npm run dev` — to launch the server with the hot reload feature.
+
+## Runnning the frontend
+
+`npm run start` — to launch the react application.  
+
 ## Examples of the project:
 
 ![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
