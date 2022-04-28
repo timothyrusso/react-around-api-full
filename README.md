@@ -26,6 +26,10 @@ This application contains hover effects, links and transitions effects. Main fun
 
 `npm run start` — to launch the react application.  
 
+## Project architecture
+
+![Architecture](https://timothyrusso.tech/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2ca31d12-7dcd-480f-8312-59e0d21e1bd5%2Fproject_architecture.png?table=block&id=9c04c733-6e18-4e21-bd82-7a7760be12ce&spaceId=bd939911-0854-481c-b8e8-4e310072fecd&width=2000&userId=&cache=v2)
+
 ## Project preview:
 
 ![Homepage](https://timothyrusso.tech/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F218d51f7-c5ae-4d5d-a5a5-1dfe2319b796%2Fsite_preview.png?table=block&id=55ae7fd2-3d76-409e-be13-65d3963f759d&spaceId=bd939911-0854-481c-b8e8-4e310072fecd&width=2000&userId=&cache=v2)
