@@ -26,6 +26,6 @@ This application contains hover effects, links and transitions effects. Main fun
 
 `npm run start` — to launch the react application.  
 
-## Examples of the project:
+## Project preview:
 
-![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
+![This is an image](https://timothyrusso.tech/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F218d51f7-c5ae-4d5d-a5a5-1dfe2319b796%2Fsite_preview.png?table=block&id=55ae7fd2-3d76-409e-be13-65d3963f759d&spaceId=bd939911-0854-481c-b8e8-4e310072fecd&width=2000&userId=&cache=v2)
