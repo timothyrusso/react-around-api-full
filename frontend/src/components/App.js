@@ -257,7 +257,7 @@ const App = () => {
             exact path="/"
             element={
               <ProtectedRoute loggedIn={loggedIn}>
-                <Main onEditAvatarClick={handleEditAvatarClick} onEditProfileClick={handleEditProfileClick} onAddPlaceClick={handleAddPlaceClick} onCardClick={handleCardClick} cards={cards} onCardLike={handleCardLike} onCardDelete={handleConfirmationClick} />
+                <Main onEditAvatarClick={handleEditAvatarClick} onEditProfileClick={handleEditProfileClick} onAddPlaceClick={handleAddPlaceClick} onCardClick={handleCardClick} cards={cards} onCardLike={handleCardLike} onCardDelete={handleConfirmationClick} addButtonText={"Add card"} editButtonText={"Edit"} />
               </ProtectedRoute>
             }
           />

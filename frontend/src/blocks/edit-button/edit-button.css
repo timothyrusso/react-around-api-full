@@ -1,14 +1,14 @@
 .edit-button {
-  background-image: url(../../images/edit-button.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 24px;
+  width: 60px;
   height: 24px;
-  border: 1px solid #fff;
-  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  background-color: #0278FE;
   grid-area: "button";
-  align-self: center;
+  margin-top: 26%;
   transition: opacity 0.2s linear;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 500;
 }
 
 .edit-button:hover {
@@ -16,10 +16,8 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 880px) {
   .edit-button {
-    width: 18px;
-    height: 18px;
-    background-size: 7.5px 7.5px;
+    margin-top: 0;
   }
 }
