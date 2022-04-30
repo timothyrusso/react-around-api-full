@@ -42,12 +42,6 @@ app.use((req, res, next) => {
 app.use(cors());
 app.options('*', cors()); // Enable requests for all routes
 
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Server will crash now');
-  }, 0);
-});
-
 app.use(routes);
 
 app.use(errorLogger); // enabling the error logger
