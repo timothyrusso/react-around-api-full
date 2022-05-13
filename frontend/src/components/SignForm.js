@@ -7,7 +7,7 @@ const SignForm = ({ title, handleSubmit, handleChange, inputs }) => {
         <div className="circle rotation"></div>
         <div className="square rotation-inverse"></div>
         <p className="sign-form__intro-paragraph">
-          Original photos for original places. Share the most original.
+          Original photos of original places. Share the most original.
         </p>
       </div>
       <div className="sign-form__wrapper">

@@ -18,6 +18,16 @@
 
 @media screen and (max-width: 450px) {
   .square {
-    top: -110px;
+    top: -100px;
+    left: -70px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .square {
+    max-width: 100px;
+    min-height: 100px;
+    top: -40px;
+    left: -80px;
   }
 }
