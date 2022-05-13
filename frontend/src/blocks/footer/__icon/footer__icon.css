@@ -1,0 +1,10 @@
+.footer__icon {
+  max-width: 30px;
+  padding-left: 14px;
+  transition: all linear 0.1s;
+}
+
+.footer__icon:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
