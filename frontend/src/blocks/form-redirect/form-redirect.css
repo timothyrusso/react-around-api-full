@@ -1,9 +1,17 @@
 .form-redirect {
-    display: block;
+  display: block;
+  text-align: right;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1;
+  color: #fff;
+  margin: 15px 0 80px;
+  padding: 0 271px;
+}
+
+@media screen and (max-width: 930px) {
+  .form-redirect {
     text-align: center;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1;
-    color: #fff;
-    margin: 15px 0 80px;
+    padding: 0;
+  }
 }

@@ -1,0 +1,23 @@
+.square {
+  max-width: 150px;
+  min-height: 150px;
+  width: 100%;
+  position: absolute;
+  top: 230px;
+  left: -20px;
+  background-color: #0278FE;
+  z-index: -1;
+}
+
+@media screen and (max-width: 930px) {
+  .square {
+    position: relative;
+    top: -250px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .square {
+    top: -110px;
+  }
+}

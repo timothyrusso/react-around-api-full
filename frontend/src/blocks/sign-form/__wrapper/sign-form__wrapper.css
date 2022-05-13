@@ -1,0 +1,13 @@
+.sign-form__wrapper {
+  max-width: 400px;
+  width: 100%;
+}
+
+@media screen and (max-width: 930px) {
+  .sign-form__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+  }
+}

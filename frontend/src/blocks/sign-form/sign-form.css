@@ -1,4 +1,25 @@
 .sign-form {
     display: flex;
+    justify-content: space-between;
+    padding: 0 250px;
+}
+
+@media screen and (max-width: 1280px) {
+  .sign-form {
+    padding: 0 200px;
+  }
+}
+
+@media screen and (max-width: 1135px) {
+  .sign-form {
+    padding: 0 100px;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  .sign-form {
     flex-direction: column;
+    padding: 0;
+    justify-content: center;
+  }
 }
