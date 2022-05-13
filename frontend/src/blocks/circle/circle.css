@@ -19,7 +19,7 @@
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 450px) {
   .circle {
     max-width: 200px;
     min-height: 200px;

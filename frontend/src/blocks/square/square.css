@@ -16,7 +16,7 @@
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 450px) {
   .square {
     top: -110px;
   }
