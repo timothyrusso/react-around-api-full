@@ -9,6 +9,18 @@
   padding: 0 271px;
 }
 
+@media screen and (max-width: 1280px) {
+  .form-redirect {
+    padding: 0 221px;
+  }
+}
+
+@media screen and (max-width: 1135px) {
+  .form-redirect {
+    padding: 0 121px;
+  }
+}
+
 @media screen and (max-width: 930px) {
   .form-redirect {
     text-align: center;
