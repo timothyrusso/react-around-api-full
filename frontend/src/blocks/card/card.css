@@ -3,4 +3,10 @@
   border-radius: 15px;
   overflow: hidden;
   position: relative;
+  transition: all .2s linear;
+}
+
+.card:hover {
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  transform: translate(0, -5px);
 }
