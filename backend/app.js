@@ -29,7 +29,7 @@ app.use(requestLogger); // enabling the request logger
 app.use((req, res, next) => {
   res.header(
     'Access-Control-Allow-Origin',
-    'https://aroundtheus-timothyrusso.students.nomoreparties.sbs',
+    'https://aroundtheus-timothyrusso.students.nomoredomainssbs.ru',
   );
   res.header(
     'Access-Control-Allow-Headers',
