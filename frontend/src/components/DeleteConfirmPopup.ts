@@ -1,11 +1,10 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
-import { IsOpen } from "./App";
 
 type DeleteConfirmPopupProps = {
-  isOpen: IsOpen;
+  isOpen: boolean;
   onClose: () => void;
-  card: undefined;
+  card;
   deleteCard;
   isLoading;
   startLoading;

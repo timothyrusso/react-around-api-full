@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, ReactComponentElement, useState } from "react";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import Header from "./Header";
 import Main from "./Main";
@@ -16,15 +16,11 @@ import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { register, authorize, checkToken } from "../utils/auth";
 
-export type IsOpen = {
-  isOpen: Boolean;
-};
-
 const App = () => {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
-  const [isConfirmationPopupOpen, setIsConfirmationPopupOpen] = useState(false);
+  const [isConfirmationPopupOpen, setIsConfirmationPopupOpen] = useState<boolean>(false);
   const [selectedCard, setSelectedCard] = useState(undefined);
   const [selectedDeleteCard, setSelectedDeleteCard] = useState(undefined);
   const [currentUser, setCurrentUser] = useState({});
@@ -157,7 +153,7 @@ const App = () => {
     setErrorMessage({ ...errorMessage, [name]: evt.target.validationMessage });
   };
 
-  const onFormUpdate = (data) => {
+  const onFormUpdate = (data: boolean): void => {
     data ? setFormValidity(true) : setFormValidity(false);
   };
 
@@ -193,7 +189,7 @@ const App = () => {
     history("/signin");
   };
 
-  const handleRegisterSubmit = (password, email) => {
+  const handleRegisterSubmit = (password: string, email: string) => {
     register(password, email)
       .then((res) => {
         if (res.data._id) {
@@ -214,7 +210,7 @@ const App = () => {
       });
   };
 
-  const handleLoginSubmit = (password, email) => {
+  const handleLoginSubmit = (password: string, email: string) => {
     if (!password || !email) {
       setStatus("failed");
       setTooltipOpen(true);
