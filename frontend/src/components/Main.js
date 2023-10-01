@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./Card";
+import Card from "./Card/Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 const Main = ({ onEditAvatarClick, onEditProfileClick, onAddPlaceClick, onCardClick, cards, onCardLike, onCardDelete, editButtonText, addButtonText, children }) => {
