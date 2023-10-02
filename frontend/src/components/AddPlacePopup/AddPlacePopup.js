@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import PopupWithForm from "./PopupWithForm";
-import Input from "./Input";
+import PopupWithForm from "../PopupWithForm";
+import Input from "../Input";
 
 const AddPlacePopup = ({ isOpen, onClose, onAddPlaceSubmit, isLoading, startLoading, formValidity, onFormUpdate, errorMessage, onInputUpdate }) => {
 
