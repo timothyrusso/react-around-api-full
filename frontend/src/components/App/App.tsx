@@ -1,20 +1,20 @@
 import React, { FC, ReactComponentElement, useState } from "react";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
-import Header from "./Header";
-import Main from "./Main";
+import Header from "../Header";
+import Main from "../Main";
 import Footer from "./Footer";
-import EditProfilePopup from "./EditProfilePopup";
-import EditAvatarPopup from "./EditAvatarPopup/EditAvatarPopup";
-import ImagePopup from "./ImagePopup";
-import AddPlacePopup from "./AddPlacePopup/AddPlacePopup";
-import DeleteConfirmPopup from "./DeleteConfirmPopup/DeleteConfirmPopup";
-import Register from "./Register";
-import Login from "./Login";
-import ProtectedRoute from "./ProtectedRoute";
-import InfoTooltip from "./InfoTooltip";
-import api from "../utils/api";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { register, authorize, checkToken } from "../utils/auth";
+import EditProfilePopup from "../EditProfilePopup";
+import EditAvatarPopup from "../EditAvatarPopup/EditAvatarPopup";
+import ImagePopup from "../ImagePopup";
+import AddPlacePopup from "../AddPlacePopup/AddPlacePopup";
+import DeleteConfirmPopup from "../DeleteConfirmPopup/DeleteConfirmPopup";
+import Register from "../Register";
+import Login from "../Login";
+import ProtectedRoute from "../ProtectedRoute";
+import InfoTooltip from "../InfoTooltip";
+import api from "../../utils/api";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { register, authorize, checkToken } from "../../utils/auth";
 
 const App = () => {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
