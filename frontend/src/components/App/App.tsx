@@ -3,7 +3,7 @@ import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import Header from "../Header";
 import Main from "../Main";
 import Footer from "./Footer";
-import EditProfilePopup from "../EditProfilePopup";
+import EditProfilePopup from "../EditProfilePopup/EditProfilePopup";
 import EditAvatarPopup from "../EditAvatarPopup/EditAvatarPopup";
 import ImagePopup from "../ImagePopup";
 import AddPlacePopup from "../AddPlacePopup/AddPlacePopup";
