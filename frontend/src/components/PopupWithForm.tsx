@@ -1,6 +1,6 @@
 import React from "react";
 import Popup from "./Popup";
-import Form from "./Form";
+import Form from "./Form/Form";
 
 export type PopupWithFormProps = {
   name;
