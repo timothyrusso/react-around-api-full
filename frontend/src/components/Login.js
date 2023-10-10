@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SignForm from "./SignForm";
-import FormRedirect from "./FormRedirect";
+import FormRedirect from "./FormRedirect/FormRedirect";
 
 const Login = ({ handleLoginSubmit }) => {
 
