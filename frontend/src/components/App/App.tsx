@@ -1,6 +1,6 @@
 import React, { FC, ReactComponentElement, useState } from "react";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
-import Header from "../Header";
+import Header from "../Header/Header";
 import Main from "../Main";
 import Footer from "./Footer";
 import EditProfilePopup from "../EditProfilePopup/EditProfilePopup";
@@ -32,7 +32,7 @@ const App = () => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [toggleMenu, setToggleMenu] = useState(false);
-
+  
   const history = useNavigate();
 
   const handleCardLike = (card) => {
