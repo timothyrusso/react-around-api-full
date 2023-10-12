@@ -11,7 +11,7 @@ import DeleteConfirmPopup from "../DeleteConfirmPopup/DeleteConfirmPopup";
 import Register from "../Register";
 import Login from "../Login";
 import ProtectedRoute from "../ProtectedRoute";
-import InfoTooltip from "../InfoTooltip";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import api from "../../utils/api";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { register, authorize, checkToken } from "../../utils/auth";

@@ -1,5 +1,5 @@
 import React from "react";
-import Popup from "./Popup";
+import Popup from "../Popup";
 import successImage from "../images/success.svg"
 import failedImage from "../images/failed.svg"
 
