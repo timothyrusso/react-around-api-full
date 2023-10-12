@@ -5,7 +5,7 @@ import Main from "../Main";
 import Footer from "./Footer";
 import EditProfilePopup from "../EditProfilePopup/EditProfilePopup";
 import EditAvatarPopup from "../EditAvatarPopup/EditAvatarPopup";
-import ImagePopup from "../ImagePopup";
+import ImagePopup from "../ImagePopup/ImagePopup";
 import AddPlacePopup from "../AddPlacePopup/AddPlacePopup";
 import DeleteConfirmPopup from "../DeleteConfirmPopup/DeleteConfirmPopup";
 import Register from "../Register";
