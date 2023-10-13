@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import PopupWithForm from "../PopupWithForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import Input from "../Input";
+import Input from "../Input/Input";
 
 
 const EditProfilePopup = ({ isOpen, onClose, onUpdateUser, isLoading, startLoading, formValidity, onFormUpdate, onInputUpdate, errorMessage }) => {
