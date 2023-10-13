@@ -9,7 +9,7 @@ import ImagePopup from "../ImagePopup/ImagePopup";
 import AddPlacePopup from "../AddPlacePopup/AddPlacePopup";
 import DeleteConfirmPopup from "../DeleteConfirmPopup/DeleteConfirmPopup";
 import Register from "../Register";
-import Login from "../Login";
+import Login from "../Login/Login";
 import ProtectedRoute from "../ProtectedRoute";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import api from "../../utils/api";
