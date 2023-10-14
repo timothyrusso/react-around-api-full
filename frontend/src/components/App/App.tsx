@@ -1,7 +1,7 @@
 import React, { FC, ReactComponentElement, useState } from "react";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
-import Main from "../Main";
+import Main from "../Main/Main";
 import Footer from "./Footer";
 import EditProfilePopup from "../EditProfilePopup/EditProfilePopup";
 import EditAvatarPopup from "../EditAvatarPopup/EditAvatarPopup";
