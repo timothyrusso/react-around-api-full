@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 
 type DeleteConfirmPopupProps = {
@@ -11,7 +11,7 @@ type DeleteConfirmPopupProps = {
   formValidity;
 };
 
-const DeleteConfirmPopup = ({
+const DeleteConfirmPopup: FC<DeleteConfirmPopupProps> = ({
   isOpen,
   onClose,
   card,
@@ -19,8 +19,8 @@ const DeleteConfirmPopup = ({
   isLoading,
   startLoading,
   formValidity,
-}: DeleteConfirmPopupProps) => {
-  const handleSubmit = (evt) => {
+}) => {
+  const handleSubmit = (evt: { preventDefault: () => void; }) => {
     startLoading();
     evt.preventDefault();
     deleteCard(card);
