@@ -1,10 +1,11 @@
 import { FC } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import { Card } from "../../types/Card";
 
 type DeleteConfirmPopupProps = {
   isOpen: boolean;
   onClose: () => void;
-  card;
+  card: Card;
   deleteCard;
   isLoading;
   startLoading;
