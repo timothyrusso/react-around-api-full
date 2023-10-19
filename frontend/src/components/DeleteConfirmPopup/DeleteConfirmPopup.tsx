@@ -6,10 +6,10 @@ type DeleteConfirmPopupProps = {
   isOpen: boolean;
   onClose: () => void;
   card: Card;
-  deleteCard;
-  isLoading;
-  startLoading;
-  formValidity;
+  deleteCard: (card: Card) => void;
+  isLoading: boolean;
+  startLoading: () => void;
+  formValidity: boolean;
 };
 
 const DeleteConfirmPopup: FC<DeleteConfirmPopupProps> = ({
