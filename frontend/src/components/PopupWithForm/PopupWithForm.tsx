@@ -14,8 +14,8 @@ export type PopupWithFormProps = {
   loadingText;
   isLoading;
   formValidity;
-  onFormUpdate;
-  children;
+  onFormUpdate?: (data: boolean) => void;
+  children?: React.ReactNode;
 };
 
 const PopupWithForm = ({
