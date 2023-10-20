@@ -4,9 +4,9 @@ export type PopupProps = {
   isOpen: boolean;
   name;
   onClose;
-  previewClass;
-  infoTooltip;
-  children;
+  previewClass?: boolean;
+  infoTooltip?: boolean;
+  children?: React.ReactNode;
 };
 
 const Popup = ({
