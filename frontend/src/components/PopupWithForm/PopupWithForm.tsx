@@ -3,17 +3,17 @@ import Popup from "../Popup/Popup";
 import Form from "../Form/Form";
 
 export type PopupWithFormProps = {
-  name;
-  title;
+  name: string;
+  title: string;
   isOpen: boolean;
-  onClose;
-  buttonText;
-  confirmationButtonClass;
-  confirmationTitleClass;
-  onSubmit;
-  loadingText;
-  isLoading;
-  formValidity;
+  onClose: () => void;
+  buttonText: string;
+  confirmationButtonClass: string;
+  confirmationTitleClass: string;
+  onSubmit: (evt: { preventDefault: () => void; }) => void;
+  loadingText: string;
+  isLoading: boolean;
+  formValidity: boolean;
   onFormUpdate?: (data: boolean) => void;
   children?: React.ReactNode;
 };
