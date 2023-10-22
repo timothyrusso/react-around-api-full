@@ -22,7 +22,7 @@ const Popup = ({
     // with this we prevent adding the listener if the popup is not opened
     if (!isOpen) return;
     // we should define the handler inside `useEffect`, so that it wouldn’t lose the reference to be able to remove it
-    const closeByEscape = (evt) => {
+    const closeByEscape = (evt: KeyboardEvent) => {
       if (evt.key === "Escape") {
         onClose();
       }
@@ -35,7 +35,7 @@ const Popup = ({
   }, [isOpen, onClose]);
 
   // here is the overlay handler
-  const handleOverlay = (evt) => {
+  const handleOverlay = (evt: React.MouseEvent<HTMLDivElement>) => {
     if (evt.target === evt.currentTarget) {
       onClose();
     }
