@@ -2,8 +2,8 @@ import { useEffect } from "react";
 
 export type PopupProps = {
   isOpen: boolean;
-  name;
-  onClose;
+  name: string;
+  onClose: () => void;
   previewClass?: boolean;
   infoTooltip?: boolean;
   children?: React.ReactNode;
