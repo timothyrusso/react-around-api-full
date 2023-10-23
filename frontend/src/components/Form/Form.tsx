@@ -1,6 +1,13 @@
 import React, { useRef } from "react";
 
-const Form = ({ name, onSubmit, onFormUpdate, children }) => {
+export type FormProps = {
+  name: string;
+  onSubmit: (evt: { preventDefault: () => void; }) => void;
+  onFormUpdate: (data: boolean) => void;
+  children: React.ReactNode;
+}
+
+const Form = ({ name, onSubmit, onFormUpdate, children }: FormProps) => {
   const formRef = useRef();
 
   const handleFormValidity = () => {
