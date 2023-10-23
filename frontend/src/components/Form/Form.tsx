@@ -8,11 +8,13 @@ export type FormProps = {
 }
 
 const Form = ({ name, onSubmit, onFormUpdate, children }: FormProps) => {
-  const formRef = useRef();
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleFormValidity = () => {
+    if (formRef.current) {
     const formValidityBoolean: boolean = formRef.current.checkValidity();
     onFormUpdate(formValidityBoolean);
+    }
   };
 
   return (
