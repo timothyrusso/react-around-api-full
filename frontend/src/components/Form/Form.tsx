@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 export type FormProps = {
   name: string;
   onSubmit: (evt: { preventDefault: () => void; }) => void;
-  onFormUpdate: (data: boolean) => void;
+  onFormUpdate?: (data: boolean) => void;
   children: React.ReactNode;
 }
 
@@ -13,7 +13,7 @@ const Form = ({ name, onSubmit, onFormUpdate, children }: FormProps) => {
   const handleFormValidity = () => {
     if (formRef.current) {
     const formValidityBoolean: boolean = formRef.current.checkValidity();
-    onFormUpdate(formValidityBoolean);
+    if(onFormUpdate) onFormUpdate(formValidityBoolean);
     }
   };
 
