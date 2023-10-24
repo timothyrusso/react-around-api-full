@@ -8,8 +8,8 @@ export type PopupWithFormProps = {
   isOpen: boolean;
   onClose: () => void;
   buttonText: string;
-  confirmationButtonClass: string;
-  confirmationTitleClass: string;
+  confirmationButtonClass?: string;
+  confirmationTitleClass?: string;
   onSubmit: (evt: { preventDefault: () => void; }) => void;
   loadingText: string;
   isLoading: boolean;
