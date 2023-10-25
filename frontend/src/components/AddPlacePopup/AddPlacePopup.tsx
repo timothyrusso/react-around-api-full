@@ -1,6 +1,19 @@
 import React, { useState } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import Input from "../Input/Input";
+import type { Card } from "../../types/Card";
+
+export type AddPlacePopupProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  onAddPlaceSubmit: (card: Card) => void;
+  isLoading: boolean;
+  startLoading: () => void;
+  formValidity: boolean;
+  onFormUpdate: (data: boolean) => void;
+  errorMessage: {[name: string]: string} | {};
+  onInputUpdate: (evt: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
 const AddPlacePopup = ({ isOpen, onClose, onAddPlaceSubmit, isLoading, startLoading, formValidity, onFormUpdate, errorMessage, onInputUpdate }) => {
 
