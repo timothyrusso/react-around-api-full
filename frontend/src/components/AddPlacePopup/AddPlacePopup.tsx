@@ -15,7 +15,7 @@ export type AddPlacePopupProps = {
   onInputUpdate: (evt: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const AddPlacePopup = ({ isOpen, onClose, onAddPlaceSubmit, isLoading, startLoading, formValidity, onFormUpdate, errorMessage, onInputUpdate }) => {
+const AddPlacePopup = ({ isOpen, onClose, onAddPlaceSubmit, isLoading, startLoading, formValidity, onFormUpdate, errorMessage, onInputUpdate }: AddPlacePopupProps) => {
 
   const [cardName, setCardName] = useState('')
   const [link, setLink] = useState('')
