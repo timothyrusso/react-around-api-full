@@ -33,7 +33,7 @@ const AddPlacePopup = ({ isOpen, onClose, onAddPlaceSubmit, isLoading, startLoad
   const handleSubmit = (evt) => {
     startLoading()
     evt.preventDefault()
-    onAddPlaceSubmit({ cardName, link })
+    onAddPlaceSubmit({ name: cardName, link })
   }
 
   React.useEffect(() => {
