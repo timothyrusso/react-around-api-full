@@ -10,7 +10,7 @@ export type PopupWithFormProps = {
   buttonText: string;
   confirmationButtonClass?: string;
   confirmationTitleClass?: string;
-  onSubmit: (evt: { preventDefault: () => void; }) => void;
+  onSubmit: (evt: React.FormEvent<HTMLFormElement>) => void;
   loadingText: string;
   isLoading: boolean;
   formValidity: boolean;

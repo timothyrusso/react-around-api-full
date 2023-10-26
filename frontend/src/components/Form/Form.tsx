@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 export type FormProps = {
   name: string;
-  onSubmit: (evt: { preventDefault: () => void; }) => void;
+  onSubmit: (evt: React.FormEvent<HTMLFormElement>) => void;
   onFormUpdate?: (data: boolean) => void;
   children: React.ReactNode;
 }

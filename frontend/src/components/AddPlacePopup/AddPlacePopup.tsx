@@ -20,17 +20,17 @@ const AddPlacePopup = ({ isOpen, onClose, onAddPlaceSubmit, isLoading, startLoad
   const [cardName, setCardName] = useState('')
   const [link, setLink] = useState('')
 
-  const handleNameCardChange = (evt) => {
+  const handleNameCardChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     onInputUpdate(evt)
     setCardName(evt.target.value)
   }
 
-  const handleLinkChange = (evt) => {
+  const handleLinkChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     onInputUpdate(evt)
     setLink(evt.target.value)
   }
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     startLoading()
     evt.preventDefault()
     onAddPlaceSubmit({ name: cardName, link })
