@@ -10,7 +10,7 @@ export type InputProps = {
   minLength?: string;
   maxLength?: string;
   value: string;
-  errorMessage: {[name: string]: string} | {};
+  errorMessage: {[name: string]: string};
 }
 
 const Input = ({ type, idName, name, fieldName, placeholder, onChange, minLength, maxLength, value, errorMessage }: InputProps) => {
