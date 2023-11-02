@@ -1,13 +1,21 @@
 import React from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { Card as CardType } from "../../types/Card";
 
-const Card = ({ card, onCardClick, onCardLike, onCardDelete }) => {
+export type CardProps = {
+    card: CardType;
+    onCardClick: (card: CardType) => void;
+    onCardLike: (card: CardType) => void;
+    onCardDelete: (card: CardType) => void;
+}
+
+const Card = ({ card, onCardClick, onCardLike, onCardDelete }: CardProps) => {
 
     const currentUser = React.useContext(CurrentUserContext);
 
     const isOwn = card.owner === currentUser._id;
     const cardDeleteButtonClassName = isOwn ? 'card__delete' : 'card__delete_hidden';
-    const isLiked = card.likes.some(i => i === currentUser._id);
+    const isLiked = card.likes && card.likes.some(i => i === currentUser._id);
 
     const cardLikeButtonClassName = (
         `card__like ${isLiked ? 'card__like_active' : ''}`
@@ -33,7 +41,7 @@ const Card = ({ card, onCardClick, onCardLike, onCardDelete }) => {
                 <h2 className="card__title">{card.name}</h2>
                 <div className="card__like-wrapper">
                     <button aria-label="Like" type="button" className={cardLikeButtonClassName} onClick={handleLikeClick}></button>
-                    <p className="card__like-counter">{card.likes.length}</p>
+                    <p className="card__like-counter">{card.likes && card.likes.length}</p>
                 </div>
             </div>
         </li>
