@@ -15,14 +15,14 @@ export type EditAvatarPopupProps = {
 
 const EditAvatarPopup = ({ isOpen, onClose, onUpdateAvatar, isLoading, startLoading, formValidity, onFormUpdate, errorMessage, onInputUpdate }: EditAvatarPopupProps) => {
 
-  const avatarRef = useRef(null)
+  const avatarRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (evt) => {
     startLoading()
     evt.preventDefault()
 
     onUpdateAvatar({
-      avatar: avatarRef.current.value
+      avatar: avatarRef.current ? avatarRef.current.value : undefined
     });
   }
 
