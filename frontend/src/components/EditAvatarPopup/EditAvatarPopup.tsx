@@ -1,9 +1,21 @@
 import { useRef } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 
-const EditAvatarPopup = ({ isOpen, onClose, onUpdateAvatar, isLoading, startLoading, formValidity, onFormUpdate, errorMessage, onInputUpdate }) => {
+export type EditAvatarPopupProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  onUpdateAvatar: (currentUser) => void;
+  isLoading: boolean;
+  startLoading: () => void;
+  formValidity: boolean;
+  onFormUpdate: (data: boolean) => void;
+  errorMessage: {[name: string]: string} | {};
+  onInputUpdate: (evt: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-  const avatarRef = useRef()
+const EditAvatarPopup = ({ isOpen, onClose, onUpdateAvatar, isLoading, startLoading, formValidity, onFormUpdate, errorMessage, onInputUpdate }: EditAvatarPopupProps) => {
+
+  const avatarRef = useRef(null)
 
   const handleSubmit = (evt) => {
     startLoading()
