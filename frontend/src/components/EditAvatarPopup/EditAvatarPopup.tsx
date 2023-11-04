@@ -9,7 +9,7 @@ export type EditAvatarPopupProps = {
   startLoading: () => void;
   formValidity: boolean;
   onFormUpdate: (data: boolean) => void;
-  errorMessage: {[name: string]: string} | {};
+  errorMessage: {[name: string]: string};
   onInputUpdate: (evt: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
