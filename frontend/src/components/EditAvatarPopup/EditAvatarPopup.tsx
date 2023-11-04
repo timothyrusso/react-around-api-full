@@ -17,7 +17,7 @@ const EditAvatarPopup = ({ isOpen, onClose, onUpdateAvatar, isLoading, startLoad
 
   const avatarRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     startLoading()
     evt.preventDefault()
 
