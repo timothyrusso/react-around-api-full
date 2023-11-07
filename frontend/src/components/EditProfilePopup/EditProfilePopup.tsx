@@ -3,8 +3,19 @@ import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Input from "../Input/Input";
 
+export type EditProfilePopupProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  onUpdateUser: (currentUser) => void;
+  isLoading: boolean;
+  startLoading: () => void;
+  formValidity: boolean;
+  onFormUpdate: (data: boolean) => void;
+  errorMessage: {[name: string]: string};
+  onInputUpdate: (evt: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-const EditProfilePopup = ({ isOpen, onClose, onUpdateUser, isLoading, startLoading, formValidity, onFormUpdate, onInputUpdate, errorMessage }) => {
+const EditProfilePopup = ({ isOpen, onClose, onUpdateUser, isLoading, startLoading, formValidity, onFormUpdate, onInputUpdate, errorMessage }: EditProfilePopupProps) => {
 
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
