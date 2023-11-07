@@ -22,17 +22,17 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateUser, isLoading, startLoadi
 
   const currentUser = useContext(CurrentUserContext)
 
-  const handleNameChange = (evt) => {
+  const handleNameChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     onInputUpdate(evt)
     setName(evt.target.value);
   }
 
-  const handleDescriptionChange = (evt) => {
+  const handleDescriptionChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     onInputUpdate(evt)
     setDescription(evt.target.value);
   }
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     startLoading()
     // Prevent the browser from navigating to the form address
     evt.preventDefault();
