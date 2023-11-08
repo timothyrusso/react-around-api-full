@@ -1,4 +1,3 @@
-import React from "react";
 import linkedinIcon from "../images/linkedin.svg";
 import githubIcon from "../images/github.svg";
 
@@ -11,14 +10,14 @@ const Footer = () => {
       <p className="footer__copyright">
         © {year} Timothy Russo - Around The U.S.
       </p>
-      <a href="https://github.com/timothyrusso" target="_blank">
-        <img src={githubIcon} className="footer__icon"></img>
+      <a href="https://github.com/timothyrusso" target="_blank" rel="noreferrer">
+        <img src={githubIcon} className="footer__icon" alt="GitHub icon"></img>
       </a>
       <a
         href="https://www.linkedin.com/in/russotimothysoftwareengineer/"
-        target="_blank"
+        target="_blank" rel="noreferrer"
       >
-        <img src={linkedinIcon} className="footer__icon"></img>
+        <img src={linkedinIcon} className="footer__icon" alt="LinkedIn icon"></img>
       </a>
     </footer>
   );
