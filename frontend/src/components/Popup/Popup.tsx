@@ -1,7 +1,8 @@
 import { useEffect } from "react";
+import { Card } from "../../types/Card";
 
 export type PopupProps = {
-  isOpen: boolean;
+  isOpen: boolean | Card | undefined;
   name: string;
   onClose: () => void;
   previewClass?: boolean;
