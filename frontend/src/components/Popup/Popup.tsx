@@ -3,8 +3,8 @@ import { Card } from "../../types/Card";
 
 export type PopupProps = {
   isOpen: boolean | Card | undefined;
-  name: string;
   onClose: () => void;
+  name?: string;
   previewClass?: boolean;
   infoTooltip?: boolean;
   children?: React.ReactNode;

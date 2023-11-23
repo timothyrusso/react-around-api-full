@@ -3,7 +3,13 @@ import Popup from "../Popup/Popup";
 import successImage from "../images/success.svg"
 import failedImage from "../images/failed.svg"
 
-const InfoTooltip = ({ isOpen, onClose, status }) => {
+export type InfoTooltipProps = {
+    isOpen: boolean;
+    onClose: () => void;
+    status: string;
+}
+
+const InfoTooltip = ({ isOpen, onClose, status }: InfoTooltipProps) => {
 
     return (
         <Popup isOpen={isOpen} onClose={onClose} infoTooltip={true}>
