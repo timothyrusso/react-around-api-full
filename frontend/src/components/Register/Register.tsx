@@ -12,7 +12,7 @@ const Register = ({ handleRegisterSubmit }: RegisterProps) => {
     password: '',
   });
 
-  const handleChange = (evt) => {
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = evt.target;
     setInputs((prevState) => ({
       ...prevState,
@@ -20,7 +20,7 @@ const Register = ({ handleRegisterSubmit }: RegisterProps) => {
     }));
   };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     const { email, password } = inputs;
     evt.preventDefault();
     handleRegisterSubmit(password, email);
