@@ -1,6 +1,21 @@
-import React from "react";
+import React, { FC } from 'react';
 
-const SignForm = ({ title, handleSubmit, handleChange, inputs }) => {
+type SignFormProps = {
+  title: string;
+  handleSubmit: (evt: React.FormEvent<HTMLFormElement>) => void;
+  handleChange: (evt: React.ChangeEvent<HTMLInputElement>) => void;
+  inputs: {
+    email: string;
+    password: string;
+  };
+};
+
+const SignForm: FC<SignFormProps> = ({
+  title,
+  handleSubmit,
+  handleChange,
+  inputs,
+}) => {
   return (
     <form className="sign-form" onSubmit={handleSubmit}>
       <div className="sign-form__intro">
