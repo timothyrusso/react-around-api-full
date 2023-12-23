@@ -1,19 +1,19 @@
 import React, { FC } from 'react';
 import Card from '../Card/Card';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import type { Card as Cardtype } from '../../types/Card';
+import type { Card as CardType } from '../../types/Card';
 
 export type MainProps = {
   onEditAvatarClick: () => void;
   onEditProfileClick: () => void;
   onAddPlaceClick: () => void;
-  onCardClick: () => void;
-  cards: Cardtype[];
-  onCardLike: () => void;
-  onCardDelete: () => void;
-  editButtonText: () => void;
-  addButtonText: () => void;
-  children: React.ReactNode;
+  onCardClick: (card: CardType) => void;
+  cards: CardType[];
+  onCardLike: (card: CardType) => void;
+  onCardDelete: (card: CardType) => void;
+  editButtonText: string;
+  addButtonText: string;
+  children?: React.ReactNode;
 };
 
 const Main: FC<MainProps> = ({
